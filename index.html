@@ -1,0 +1,969 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3 años de nosotros ♡</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ffe0ec, #e8d8ff, #fff0f5);
+    color: #754b64;
+    overflow-x: hidden;
+}
+
+.pagina {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+}
+
+.card {
+    width: 100%;
+    max-width: 650px;
+    padding: 45px 35px;
+    text-align: center;
+    background: rgba(255,255,255,0.75);
+    border: 1px solid rgba(255,255,255,0.9);
+    border-radius: 30px;
+    box-shadow: 0 15px 50px rgba(190,100,150,0.2);
+    backdrop-filter: blur(15px);
+    animation: aparecer 0.8s ease;
+}
+
+.icono {
+    font-size: 65px;
+    margin-bottom: 10px;
+    animation: latido 1.5s infinite;
+}
+
+h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 58px;
+    color: #d45d91;
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+.subtitulo {
+    color: #a67895;
+    margin-bottom: 25px;
+}
+
+input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #f3c3d8;
+    border-radius: 15px;
+    outline: none;
+    text-align: center;
+    font-size: 18px;
+    color: #a64d7c;
+    background: #fffafd;
+    font-family: 'Poppins', sans-serif;
+}
+
+input:focus {
+    border-color: #d45d91;
+    box-shadow: 0 0 15px #f5c1d9;
+}
+
+button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 15px;
+    border: none;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #ed8bb5, #c88ce8);
+    color: white;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(210,120,180,0.3);
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(210,120,180,0.4);
+}
+
+.mensaje {
+    margin-top: 18px;
+    color: #d45d91;
+    font-weight: 500;
+    min-height: 25px;
+}
+
+.pagina-oculta {
+    display: none;
+}
+
+.decoracion {
+    font-size: 25px;
+    margin: 25px 0;
+}
+
+.texto-largo {
+    text-align: left;
+    line-height: 2;
+}
+
+.texto-largo p {
+    margin-bottom: 20px;
+}
+
+/* CARTA CORREGIDA */
+
+.carta {
+    display: none;
+
+    width: 90%;
+    max-width: 750px;
+
+    margin: 40px auto;
+    padding: 45px;
+
+    background: rgba(255,255,255,0.88);
+    border-radius: 30px;
+
+    box-shadow: 0 15px 60px rgba(190,100,150,0.2);
+
+    animation: aparecer 1.5s ease;
+
+    position: relative;
+    z-index: 2;
+
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+.carta-titulo {
+    text-align: center;
+    font-family: 'Great Vibes', cursive;
+    font-size: 65px;
+    color: #d45d91;
+    margin-bottom: 10px;
+}
+
+.carta-subtitulo {
+    text-align: center;
+    font-size: 14px;
+    color: #b17b9a;
+    margin: 15px 0 35px;
+}
+
+/* TEXTO DE LA CARTA */
+
+.carta-texto {
+    font-size: 15px;
+    line-height: 2.1;
+    color: #754b64;
+
+    text-align: justify;
+
+    width: 100%;
+    max-width: 100%;
+
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+.carta-texto p {
+    margin-bottom: 22px;
+}
+
+.firma {
+    text-align: center;
+    margin-top: 40px;
+    font-family: 'Great Vibes', cursive;
+    font-size: 42px;
+    color: #d45d91;
+}
+
+.autor {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 13px;
+    color: #b17b9a;
+    letter-spacing: 2px;
+}
+
+/* CORAZONES */
+
+.heart {
+    position: fixed;
+    bottom: -50px;
+    font-size: 25px;
+    animation: subir 6s linear forwards;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* CUENTA REGRESIVA */
+
+#cuentaRegresiva {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #ffe0ec, #e8d8ff);
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+#numero {
+    font-family: 'Great Vibes', cursive;
+    font-size: 150px;
+    color: #d45d91;
+    animation: zoom 1s ease;
+}
+
+#cuentaRegresiva p {
+    font-family: 'Great Vibes', cursive;
+    font-size: 45px;
+    color: #b17b9a;
+}
+
+/* ANIMACIONES */
+
+@keyframes subir {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes latido {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes zoom {
+    0% {
+        transform: scale(0.3);
+        opacity: 0;
+    }
+
+    70% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* ADAPTACIÓN PARA CELULARES */
+
+@media (max-width: 600px) {
+
+    .pagina {
+        padding: 15px;
+    }
+
+    .card {
+        padding: 35px 22px;
+    }
+
+    .carta {
+        width: 94%;
+        max-width: 750px;
+
+        padding: 25px 20px;
+        margin: 15px auto;
+    }
+
+    .carta-titulo {
+        font-size: 48px;
+    }
+
+    .carta-texto {
+        font-size: 14px;
+        line-height: 1.9;
+        text-align: left;
+    }
+
+    h1 {
+        font-size: 45px;
+    }
+
+    #numero {
+        font-size: 110px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGINA 1: CONTRASEÑA -->
+
+<div class="pagina" id="pagina1">
+
+    <div class="card">
+
+        <div class="icono">💗</div>
+
+        <h1>Para mi niña</h1>
+
+        <p class="subtitulo">
+            Hay una pequeña sorpresa esperando por ti.<br>
+            Pero solo mi persona favorita puede abrirla...
+        </p>
+
+        <input
+            type="password"
+            id="codigo"
+            placeholder="Nuestra fecha especial"
+            maxlength="8"
+        >
+
+        <button onclick="verificarCodigo()">
+            Abrir mi regalo ♡
+        </button>
+
+        <div class="mensaje" id="mensaje1"></div>
+
+        <p style="margin-top:25px;font-size:12px;color:#c28ba9;">
+            Una fecha, una historia y un amor que sigue creciendo.
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- PAGINA 2: PREGUNTA -->
+
+<div class="pagina pagina-oculta" id="pagina2">
+
+    <div class="card">
+
+        <div class="icono">⚽💗</div>
+
+        <h1>Una preguntita...</h1>
+
+        <p class="subtitulo">
+            Antes de continuar, quiero comprobar algo
+            que seguramente ya sabes de memoria.
+        </p>
+
+        <p style="font-weight:600;margin-bottom:20px;">
+            ¿Cuál es mi equipo favorito de fútbol peruano?
+        </p>
+
+        <input
+            type="text"
+            id="respuesta"
+            placeholder="Escribe tu respuesta..."
+        >
+
+        <button onclick="verificarEquipo()">
+            Responder ♡
+        </button>
+
+        <div class="mensaje" id="mensaje2"></div>
+
+    </div>
+
+</div>
+
+
+<!-- PAGINA 3: RESPUESTA -->
+
+<div class="pagina pagina-oculta" id="pagina3">
+
+    <div class="card">
+
+        <div class="icono">💙🤍💙</div>
+
+        <h1>¡Huy, adivinastes!</h1>
+
+        <p class="subtitulo">
+            Ya te tengo loca con eso, ¿ño? jajajaja.
+        </p>
+
+        <p>
+            Pues así me tienes loquito usted, mi niña.
+            Aunque yo te hable de Alianza Lima a cada rato,
+            tú sigues aquí aguantándome y eso ya es amor
+            verdadero JAJAJA.
+        </p>
+
+        <div class="decoracion">⚽ ♡ ⚽</div>
+
+        <button onclick="mostrarPagina4()">
+            Presioname 💗
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- PAGINA 4: MENSAJE -->
+
+<div class="pagina pagina-oculta" id="pagina4">
+
+    <div class="card">
+
+        <div class="icono">🥹💗</div>
+
+        <h1>Bueno, mi amor...</h1>
+
+        <div class="texto-largo">
+
+            <p>
+                Antes de que llegues a tu regalo, quiero
+                decirte unas cositas que llevo guardadas
+                en mi corazón.
+            </p>
+
+            <p>
+                ¿Sabes? A veces me pongo a pensar en
+                cómo empezó todo lo nuestro. En aquel
+                colegio donde nos conocimos, cuando
+                todavía no imaginaba que una persona
+                como tú iba a convertirse en alguien
+                tan importante para mí.
+            </p>
+
+            <p>
+                Y ahora estamos aquí, tres años después,
+                en la universidad, creciendo y viviendo
+                tantas cosas nuevas. Si alguien me hubiera
+                dicho aquel día que iba a llegar a quererte
+                tanto, seguramente no habría sabido
+                qué responder.
+            </p>
+
+            <p>
+                Pero míranos, mi niña. Hemos pasado
+                momentos bonitos y también momentos
+                que nos hicieron llorar, pensar y aprender.
+                No todo ha sido fácil, pero nuestra
+                historia sigue escribiéndose.
+            </p>
+
+            <p>
+                Y aunque a veces me haga el gracioso,
+                aunque te moleste con mis cosas y te
+                hable de fútbol hasta cansarte,
+                quiero que sepas que detrás de todas
+                esas bromas hay un chico que te ama
+                muchísimo.
+            </p>
+
+            <p>
+                Un chico que todavía tiene cosas
+                que mejorar, que a veces se equivoca,
+                pero que tiene unas ganas enormes
+                de hacer las cosas bien contigo.
+            </p>
+
+            <p>
+                No quiero que este aniversario sea
+                solamente una fecha bonita. Quiero
+                que sea un recuerdo de todo lo que
+                hemos construido y de todo lo que
+                todavía podemos llegar a ser.
+            </p>
+
+            <p>
+                Así que sigue, mi amor...
+                Ya casi llegas a tu sorpresita.
+                Y no, todavía no puedes escaparte
+                de mí JAJAJA. 💗
+            </p>
+
+        </div>
+
+        <div class="decoracion">🌷✨🌷</div>
+
+        <button onclick="presionarBoton()">
+            Presioname 💕
+        </button>
+
+        <div class="mensaje" id="mensajeBoton"></div>
+
+    </div>
+
+</div>
+
+
+<!-- CUENTA REGRESIVA -->
+
+<div id="cuentaRegresiva">
+
+    <div id="numero">3</div>
+
+    <p>Prepárate, mi niña... 💗</p>
+
+</div>
+
+
+<!-- CARTA FINAL -->
+
+<div id="carta">
+
+    <h1 class="carta-titulo">
+        Felices 3 años, mi amor
+    </h1>
+
+    <p class="carta-subtitulo">
+        27 de noviembre de 2023 · 27 de noviembre de 2026
+    </p>
+
+    <div class="decoracion">♡ ✨ ♡ ✨ ♡</div>
+
+    <div class="carta-texto">
+
+        <p>
+            Mi Merly Jocelyn Balbin Marcos, mi niña hermosa,
+            mi amor, mi compañera y una de las cosas más
+            bonitas que me ha regalado la vida...
+        </p>
+
+        <p>
+            Hoy cumplimos tres años. Tres años desde aquel
+            27 de noviembre que, sin saberlo, se convertiría
+            en una de las fechas más importantes de mi vida.
+            Y pensar que todo comenzó en el colegio,
+            cuando todavía éramos dos chicos que no
+            imaginaban hasta dónde podía llegar esta historia.
+        </p>
+
+        <p>
+            A veces me pongo a pensar en todo lo que hemos
+            vivido. En aquellos días del colegio, en las
+            conversaciones, las miradas, las risas, los nervios
+            y esos pequeños momentos que quizá parecían
+            normales, pero que hoy guardo como recuerdos
+            que no cambiaría por nada.
+        </p>
+
+        <p>
+            Y ahora míranos, mi amor... Ya estamos en la
+            universidad. Hemos crecido, hemos cambiado,
+            tenemos nuevas responsabilidades, nuevos sueños
+            y muchas cosas por aprender. Pero hay algo que
+            me sigue pareciendo increíble: que después de
+            todo este tiempo, sigas siendo tú la persona
+            con la que quiero compartir mis días.
+        </p>
+
+        <p>
+            No todo ha sido bonito, y tú lo sabes.
+            Hemos tenido dificultades, momentos complicados,
+            discusiones, días en los que las cosas no salieron
+            como esperábamos. Hubo momentos en los que
+            quizá nos sentimos cansados o no supimos
+            cómo entendernos.
+        </p>
+
+        <p>
+            Pero incluso en medio de todo eso, aquí estamos.
+            Y para mí eso significa muchísimo. Porque amar
+            no es solamente estar cuando todo es perfecto,
+            cuando todo es risa y cuando no existe ningún
+            problema. También es aprender a quedarse,
+            a escuchar, a conversar y a buscar juntos
+            una manera de seguir adelante.
+        </p>
+
+        <p>
+            Quiero aprovechar este día para decirte algo
+            desde lo más profundo de mi corazón.
+            Sé que no siempre fui el novio que merecías.
+            Sé que tengo defectos, que cometí errores
+            y que hubo cosas que pude haber hecho
+            mucho mejor.
+        </p>
+
+        <p>
+            A veces uno se da cuenta demasiado tarde
+            de cuánto puede lastimar una palabra,
+            una actitud o una decisión. Y yo no quiero
+            seguir siendo ese chico que se equivoca
+            y simplemente espera que todo se arregle solo.
+        </p>
+
+        <p>
+            Quiero cambiar, mi niña. Pero no quiero
+            decírtelo solamente porque hoy cumplimos
+            años juntos, ni porque quiero que esta carta
+            te haga llorar. Quiero demostrarlo con mis
+            acciones, con mi forma de tratarte,
+            con mi paciencia, con mi respeto y con
+            la manera en que te hago sentir cada día.
+        </p>
+
+        <p>
+            No quiero prometerte que nunca volveré
+            a equivocarme, porque soy humano y todavía
+            tengo mucho que aprender. Pero sí quiero
+            prometerte que voy a esforzarme por ser
+            mejor, que voy a reconocer mis errores
+            y que nunca voy a dejar de trabajar en mí mismo.
+        </p>
+
+        <p>
+            Porque tú no eres cualquier persona en mi vida.
+            Tú eres Merly. La chica que conocí en el colegio,
+            la que se convirtió en mi enamorada, la que
+            ha compartido conmigo tantos momentos
+            y la que hoy sigue caminando a mi lado
+            mientras construimos nuestros sueños.
+        </p>
+
+        <p>
+            Me hace feliz imaginar todo lo que todavía
+            nos falta vivir. Las nuevas etapas, los logros,
+            las celebraciones, los viajes que algún día
+            haremos, las fotografías que todavía no tomamos
+            y las historias que todavía no contamos.
+        </p>
+
+        <p>
+            Quiero verte cumplir tus sueños, quiero
+            acompañarte cuando estés feliz y también
+            cuando tengas días difíciles. Quiero ser
+            alguien en quien puedas confiar, alguien
+            que te escuche de verdad y que te recuerde
+            lo valiosa que eres, incluso cuando tú
+            misma lo olvides.
+        </p>
+
+        <p>
+            Gracias por estos tres años, mi amor.
+            Gracias por las risas, por los abrazos,
+            por los momentos bonitos y también por
+            las oportunidades que me has dado para
+            aprender y crecer.
+        </p>
+
+        <p>
+            Si pudiera volver a aquel colegio y
+            encontrarme con ese chico que todavía
+            no sabía todo lo que iba a vivir contigo,
+            le diría que cuide mucho a esa niña.
+            Que no dé por sentado su amor.
+            Que la escuche, que la valore y que
+            nunca olvide lo especial que es tenerla.
+        </p>
+
+        <p>
+            Y si pudiera volver a aquel 27 de noviembre
+            de 2023, volvería a elegirte. Con todo
+            lo que sé ahora, con todo lo que hemos
+            aprendido y con todas las ganas que
+            tengo de seguir construyendo algo bonito contigo.
+        </p>
+
+        <p>
+            Merly Jocelyn, mi niña hermosa, te amo
+            demasiado. A veces siento que las palabras
+            se quedan pequeñas para explicar todo
+            lo que significas para mí. Pero espero
+            que esta carta te recuerde que eres
+            profundamente amada.
+        </p>
+
+        <p>
+            Feliz tercer aniversario, mi amor.
+            Que esta sea solamente una de las muchas
+            fechas que todavía vamos a celebrar.
+            Que sigamos creciendo, aprendiendo,
+            cuidándonos y eligiéndonos con el corazón.
+        </p>
+
+        <p>
+            Te amo desde aquel colegio, te amo
+            en esta etapa de la universidad y
+            deseo seguir amándote en todas las
+            etapas que la vida nos tenga preparadas.
+        </p>
+
+        <p>
+            Siempre voy a guardar con muchísimo
+            cariño nuestra historia. Porque no
+            se trata de que haya sido perfecta,
+            sino de que es nuestra.
+        </p>
+
+    </div>
+
+    <div class="decoracion">💗 🌷 💗</div>
+
+    <div class="firma">
+        Con todo mi corazón,<br>
+        tu Alejito
+    </div>
+
+    <div class="autor">
+        Autor: Alejito
+    </div>
+
+</div>
+
+
+<script>
+
+// CAMBIAR DE PAGINA
+
+function cambiarPagina(actual, siguiente) {
+
+    document.getElementById(actual).style.display = "none";
+
+    document.getElementById(siguiente).style.display = "flex";
+
+    window.scrollTo(0, 0);
+}
+
+
+// CONTRASEÑA
+
+function verificarCodigo() {
+
+    const codigo = document.getElementById("codigo").value.trim();
+
+    if (codigo === "27/11/23") {
+
+        cambiarPagina("pagina1", "pagina2");
+
+    } else {
+
+        document.getElementById("mensaje1").textContent =
+            "Mmm... esa no es nuestra fecha especial, mi niña ♡";
+
+    }
+}
+
+
+// PREGUNTA DE ALIANZA LIMA
+
+function verificarEquipo() {
+
+    const respuesta = document.getElementById("respuesta")
+        .value.trim().toLowerCase();
+
+    if (
+        respuesta === "alianza lima" ||
+        respuesta === "alianza" ||
+        respuesta === "club alianza lima"
+    ) {
+
+        cambiarPagina("pagina2", "pagina3");
+
+    } else {
+
+        document.getElementById("mensaje2").textContent =
+            "¿Cómo que no sabes? ¡Piensa un poquito, mi amor! JAJA";
+
+    }
+}
+
+
+// PAGINA SIGUIENTE
+
+function mostrarPagina4() {
+
+    cambiarPagina("pagina3", "pagina4");
+
+}
+
+
+// BOTON CON MENSAJES
+
+let intentos = 0;
+
+function presionarBoton() {
+
+    const mensaje = document.getElementById("mensajeBoton");
+
+    intentos++;
+
+    if (intentos === 1) {
+
+        mensaje.textContent = "ERROR, BOTÓN INCORRECTO ❌";
+
+    }
+
+    else if (intentos === 2) {
+
+        mensaje.textContent = "HAY, SIGUES PRESIONÁNDOME JAJAJA 😭";
+
+    }
+
+    else if (intentos === 3) {
+
+        mensaje.textContent = "AY, ESTÁ BIEN, TÚ GANAS 🥹";
+
+    }
+
+    else if (intentos === 4) {
+
+        iniciarCuentaRegresiva();
+
+    }
+
+}
+
+
+// CUENTA REGRESIVA
+
+function iniciarCuentaRegresiva() {
+
+    document.getElementById("pagina4").style.display = "none";
+
+    const pantalla = document.getElementById("cuentaRegresiva");
+
+    const numero = document.getElementById("numero");
+
+    pantalla.style.display = "flex";
+
+    let cuenta = 3;
+
+    numero.textContent = cuenta;
+
+    const intervalo = setInterval(() => {
+
+        cuenta--;
+
+        if (cuenta > 0) {
+
+            numero.textContent = cuenta;
+
+        } else {
+
+            clearInterval(intervalo);
+
+            numero.textContent = "♡";
+
+            setTimeout(() => {
+
+                pantalla.style.display = "none";
+
+                document.getElementById("carta").style.display = "block";
+
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+
+                lluviaCorazones();
+
+            }, 1000);
+
+        }
+
+    }, 1000);
+
+}
+
+
+// LLUVIA DE CORAZONES
+
+function lluviaCorazones() {
+
+    const corazones = ["💗", "💕", "💖", "💘", "❤️", "🌸"];
+
+    for (let i = 0; i < 60; i++) {
+
+        setTimeout(() => {
+
+            const corazon = document.createElement("div");
+
+            corazon.className = "heart";
+
+            corazon.textContent = corazones[
+                Math.floor(Math.random() * corazones.length)
+            ];
+
+            corazon.style.left = Math.random() * 100 + "vw";
+
+            corazon.style.animationDuration =
+                (4 + Math.random() * 4) + "s";
+
+            corazon.style.fontSize =
+                (18 + Math.random() * 25) + "px";
+
+            document.body.appendChild(corazon);
+
+            setTimeout(() => {
+                corazon.remove();
+            }, 8000);
+
+        }, i * 100);
+
+    }
+
+}
+
+
+// ENTER PARA RESPONDER
+
+document.getElementById("codigo").addEventListener("keydown", function(event) {
+
+    if (event.key === "Enter") {
+        verificarCodigo();
+    }
+
+});
+
+document.getElementById("respuesta").addEventListener("keydown", function(event) {
+
+    if (event.key === "Enter") {
+        verificarEquipo();
+    }
+
+});
+
+</script>
+
+</body>
+</html>
